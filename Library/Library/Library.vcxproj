@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -104,11 +104,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Lelya\cc++\Individual_project\Library\Employee;C:\Users\Lelya\cc++\Individual_project\Library\Reader;C:\Users\Lelya\cc++\Individual_project\Library\Book;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>C:\Users\Lelya\cc++\Individual_project\Library\Employee;C:\Users\Lelya\cc++\Individual_project\Library\Reader;C:\Users\Lelya\cc++\Individual_project\Library\Book;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -131,6 +135,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="library.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Book\Book.vcxproj">
+      <Project>{6f636610-2412-4a70-ac5a-ed2e810c15ba}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Employee\Employee.vcxproj">
+      <Project>{752260a3-a574-47b0-8792-7eb094d53bee}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Reader\Reader.vcxproj">
+      <Project>{9fd7f995-3acf-43c6-a3f9-291c87263dc9}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
