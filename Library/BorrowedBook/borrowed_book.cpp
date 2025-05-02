@@ -1,3 +1,3 @@
 //  Copyright 2025 Guseva Olga
 
-#include "../BorrowedBook/borrowed_book.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/BorrowedBook/borrowed_book.h"

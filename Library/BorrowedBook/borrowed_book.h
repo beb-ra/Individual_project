@@ -1,6 +1,8 @@
+//  Copyright 2025 Guseva Olga
+
 #pragma once
-#include "../Book/book.h"
-#include "../Date/date.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Book/book.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Date/date.h"
 
 #ifndef BORROWEDBOOK_BORROWEDBOOK_H_
 #define BORROWEDBOOK_BORROWEDBOOK_H_

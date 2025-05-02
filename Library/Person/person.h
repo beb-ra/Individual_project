@@ -1,4 +1,7 @@
+//  Copyright 2025 Guseva Olga
+
 #pragma once
+
 #include "fio.h"
 #include "date.h"
 #include "document.h"

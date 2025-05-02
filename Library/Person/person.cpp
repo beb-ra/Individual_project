@@ -1,3 +1,3 @@
 //  Copyright 2025 Guseva Olga
 
-#include "../Person/person.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Person/person.h"

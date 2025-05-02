@@ -1,5 +1,7 @@
+//  Copyright 2025 Guseva Olga
+
 #pragma once
-#include "../Date/date.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Date/date.h"
 
 #ifndef EMPLOYEE_EMPLOYEE_H_
 #define EMPLOYEE_EMPLOYEE_H_

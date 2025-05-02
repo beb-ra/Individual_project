@@ -1,8 +1,10 @@
+//  Copyright 2025 Guseva Olga
+
 #pragma once
 
-#include "../Employee/employee.h"
-#include "../Reader/reader.h"
-#include "../Book/book.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Employee/employee.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Reader/reader.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Book/book.h"
 
 #ifndef PERSON_PERSON_H_
 #define PERSON_PERSON_H_

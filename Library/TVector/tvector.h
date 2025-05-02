@@ -1,3 +1,5 @@
+//  Copyright 2025 Guseva Olga
+
 #pragma once
 
 enum State { empty, busy, deleted };

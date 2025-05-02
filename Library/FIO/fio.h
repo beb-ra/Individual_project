@@ -1,3 +1,5 @@
+//  Copyright 2025 Guseva Olga
+
 #pragma once
 
 #ifndef FIO_FIO_H_

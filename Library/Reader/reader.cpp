@@ -1,3 +1,3 @@
 //  Copyright 2025 Guseva Olga
 
-#include "../Reader/reader.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Reader/reader.h"
