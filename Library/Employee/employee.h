@@ -16,7 +16,7 @@ enum Position {
 class Employee {
     Date _employment_date;
     Position _position;
-    float _salary; 
+    float _salary;
 };
 
 #endif  // EMPLOYEE_EMPLOYEE_H_
