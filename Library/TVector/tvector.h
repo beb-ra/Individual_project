@@ -19,7 +19,7 @@ template <class T>
 int find_last_elem(const TVector<T>& data, T value) noexcept;
 template <class T>
 int* find_elem(const TVector<T>& data, T value) noexcept;
-template <class T> 
+template <class T>
 T* find_first_elem_by_pointer(const TVector<T>& data, T value) noexcept;
 template <class T>
 T* find_last_elem_by_pointer(const TVector<T>& data, T value) noexcept;
