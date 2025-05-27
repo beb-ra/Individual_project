@@ -1,8 +1,8 @@
 //  Copyright 2025 Guseva Olga
 
-#include "/Users/Lelya/cc++/Individual_project/Library/Tvector/tvector.h"
 #include <windows.h>
 #include <iostream>
+#include "/Users/Lelya/cc++/Individual_project/Library/Tvector/tvector.h"
 
 void set_color(int text_color, int bg_color) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -100,7 +100,7 @@ bool test2_try_create_with_default_object() {
     TVector<int> object;
 
     return TestSystem::check(static_cast <size_t>(0), object.size()) &&
-        TestSystem::check(static_cast <size_t>(STEP_OF_CAPACITY), 
+        TestSystem::check(static_cast <size_t>(STEP_OF_CAPACITY),
             object.capacity()) &&
         TestSystem::check(static_cast <size_t>(0), object.deleted()) &&
         TestSystem::check(State::empty, object.states()[0]);
@@ -1035,7 +1035,7 @@ bool test18_5_check_find() {
 
 bool test_18_6_check_find_after_delete() {
     TVector<int> object(100, { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,
-        12, 13, 14, 15, 16,17, 18, 19, 20, 21, 22, 23, 24, 25,
+        12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
         26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
         40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52,
         53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65,
@@ -1207,7 +1207,7 @@ bool test_19_10_check_find_by_pointer() {
     object.erase(3);
 
     TVector<int*> ptrs = find_elem_by_pointer(object, 7);
-    TVector<int*> res_ptrs(4, { &object[3], &object[17], 
+    TVector<int*> res_ptrs(4, { &object[3], &object[17],
         &object[51], &object[84] });
 
     for (size_t i = 0; i < ptrs.size(); i++) {
@@ -1271,7 +1271,7 @@ bool test_21_2_check_insert_after_delete() {
     object.insert(2, 66);
     object.insert(4, { 77, 88, 99 });
 
-    TVector<int> object2(17, { 3, 22, 66, 8, 77, 88, 99, 44, 55, 11, 
+    TVector<int> object2(17, { 3, 22, 66, 8, 77, 88, 99, 44, 55, 11,
         12, 13, 14, 15, 16, 17, 18 });
 
     return object == object2;
@@ -1559,5 +1559,5 @@ int main() {
     //*/
     TestSystem::print_final_info();
     system("pause");
-	return 0;
+    return 0;
 }

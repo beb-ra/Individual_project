@@ -11,19 +11,19 @@ enum State { empty, busy, deleted };
 
 template <class T> class TVector;
 template <class T> void hoara_sort(TVector<T>& data);
-template <class T> 
+template <class T>
 void hoara_sort_rec(TVector<T>& data, size_t left, size_t right);
-template <class T> 
+template <class T>
 int find_first_elem(const TVector<T>& data, T value) noexcept;
-template <class T> 
+template <class T>
 int find_last_elem(const TVector<T>& data, T value) noexcept;
-template <class T> 
+template <class T>
 int* find_elem(const TVector<T>& data, T value) noexcept;
 template <class T> 
 T* find_first_elem_by_pointer(const TVector<T>& data, T value) noexcept;
-template <class T> 
+template <class T>
 T* find_last_elem_by_pointer(const TVector<T>& data, T value) noexcept;
-template <class T> 
+template <class T>
 TVector<T*> find_elem_by_pointer(const TVector<T>& data, T value) noexcept;
 template <class T> void shuffle(TVector<T>& data);
 
@@ -90,11 +90,11 @@ class TVector {
     friend int find_first_elem<T>(const TVector<T>& data, T value) noexcept;
     friend int find_last_elem<T>(const TVector<T>& data, T value) noexcept;
     friend int* find_elem<T>(const TVector<T>& data, T value) noexcept;
-    friend T* find_first_elem_by_pointer<T>(const TVector<T>& data, 
+    friend T* find_first_elem_by_pointer<T>(const TVector<T>& data,
         T value) noexcept;
-    friend T* find_last_elem_by_pointer<T>(const TVector<T>& data, 
+    friend T* find_last_elem_by_pointer<T>(const TVector<T>& data,
         T value) noexcept;
-    friend TVector<T*> find_elem_by_pointer<T>(const TVector<T>& data, 
+    friend TVector<T*> find_elem_by_pointer<T>(const TVector<T>& data,
         T value) noexcept;
     friend void shuffle<T>(TVector<T>& data);
     /* ... */
@@ -498,9 +498,9 @@ void TVector<T>::resize(size_t new_size) noexcept {
     if (new_size == _size) return;
 
     T* new_data; State* new_states;
-    size_t new_capacity = (new_size / STEP_OF_CAPACITY + 1) 
+    size_t new_capacity = (new_size / STEP_OF_CAPACITY + 1)
         * STEP_OF_CAPACITY;
-    size_t lowest_capacity = new_capacity > _capacity ? 
+    size_t lowest_capacity = new_capacity > _capacity ?
         _capacity : new_capacity;
 
     if (new_size == 0) {
@@ -777,7 +777,8 @@ void TVector<T>::insert(const size_t index, size_t count, const T& value) {
 
 
 template <class T>
-void TVector<T>::insert(const size_t index, std::initializer_list<T> data_list) {
+void TVector<T>::insert(const size_t index,
+    std::initializer_list<T> data_list) {
     if (index > _size)
         throw std::invalid_argument("Index is larger than vector size\n");
 
@@ -887,7 +888,8 @@ void TVector<T>::print() noexcept {
 
 template <class T>
 void TVector<T>::print_all_info() noexcept {
-    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "--------------------------------------------"
+        << std::endl;
     std::cout << "CAPACITY: " << _capacity << std::endl;
     std::cout << "SIZE: " << _size << std::endl;
     std::cout << "DELETED: " << _deleted << std::endl;
@@ -900,7 +902,6 @@ void TVector<T>::print_all_info() noexcept {
     } else {
         std::cout << "nullptr" << std::endl;
     }
-    
     std::cout << "STATES: ";
     if (_states != nullptr) {
         for (int i = 0; i < _capacity; i++) {
@@ -911,7 +912,8 @@ void TVector<T>::print_all_info() noexcept {
         std::cout << "nullptr" << std::endl;
     }
     print();
-    std::cout << "---------------------------------------------------" << std::endl;
+    std::cout << "--------------------------------------------"
+        << std::endl;
 }
 
 template <class T>
@@ -943,7 +945,9 @@ void hoara_sort_rec(TVector<T>& data, size_t left, size_t right) {
                 data._states[r] = tmp2;
                 l++;
                 if (r > 0) r--;
-            } else break;
+            } else {
+                break;
+            }
         }
         hoara_sort_rec(data, left, r);
         hoara_sort_rec(data, l, right);
@@ -994,7 +998,6 @@ int* find_elem(const TVector<T>& data, T value) noexcept {
             if (data._data[i] == value && data._states[i] == State::busy)
                 result[index++] = i - not_busy_count;
         }
-        
     }
     return result;
 }
@@ -1034,7 +1037,6 @@ TVector<T*> find_elem_by_pointer(const TVector<T>& data, T value) noexcept {
                 index++;
             }
         }
-        
     }
     return result;
 }
