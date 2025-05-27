@@ -11,13 +11,20 @@ enum State { empty, busy, deleted };
 
 template <class T> class TVector;
 template <class T> void hoara_sort(TVector<T>& data);
-template <class T> void hoara_sort_rec(TVector<T>& data, size_t left, size_t right);
-template <class T> int find_first_elem(const TVector<T>& data, T value) noexcept;
-template <class T> int find_last_elem(const TVector<T>& data, T value) noexcept;
-template <class T> int* find_elem(const TVector<T>& data, T value) noexcept;
-template <class T> T* find_first_elem_by_pointer(const TVector<T>& data, T value) noexcept;
-template <class T> T* find_last_elem_by_pointer(const TVector<T>& data, T value) noexcept;
-template <class T> TVector<T*> find_elem_by_pointer(const TVector<T>& data, T value) noexcept;
+template <class T> 
+void hoara_sort_rec(TVector<T>& data, size_t left, size_t right);
+template <class T> 
+int find_first_elem(const TVector<T>& data, T value) noexcept;
+template <class T> 
+int find_last_elem(const TVector<T>& data, T value) noexcept;
+template <class T> 
+int* find_elem(const TVector<T>& data, T value) noexcept;
+template <class T> 
+T* find_first_elem_by_pointer(const TVector<T>& data, T value) noexcept;
+template <class T> 
+T* find_last_elem_by_pointer(const TVector<T>& data, T value) noexcept;
+template <class T> 
+TVector<T*> find_elem_by_pointer(const TVector<T>& data, T value) noexcept;
 template <class T> void shuffle(TVector<T>& data);
 
 template <class T>
@@ -28,8 +35,8 @@ class TVector {
     size_t _deleted;
     State* _states;
 
-public:
-    TVector(size_t size = 0);
+ public:
+    explicit TVector(size_t size = 0);
     TVector(size_t size, const T* data);
     TVector(const TVector<T>& other);
     TVector(size_t size, std::initializer_list<T> data);
@@ -38,7 +45,7 @@ public:
     bool operator == (const TVector<T>& other) const noexcept;
     bool operator != (const TVector<T>& other) const noexcept;
     TVector& operator = (const TVector& other);
-    T& operator [] (size_t index);
+    T& operator[] (size_t index);
     const T& operator[](size_t index) const;
 
     const T& at(size_t index) const;
@@ -83,12 +90,15 @@ public:
     friend int find_first_elem<T>(const TVector<T>& data, T value) noexcept;
     friend int find_last_elem<T>(const TVector<T>& data, T value) noexcept;
     friend int* find_elem<T>(const TVector<T>& data, T value) noexcept;
-    friend T* find_first_elem_by_pointer<T>(const TVector<T>& data, T value) noexcept;
-    friend T* find_last_elem_by_pointer<T>(const TVector<T>& data, T value) noexcept;
-    friend TVector<T*> find_elem_by_pointer<T>(const TVector<T>& data, T value) noexcept;
+    friend T* find_first_elem_by_pointer<T>(const TVector<T>& data, 
+        T value) noexcept;
+    friend T* find_last_elem_by_pointer<T>(const TVector<T>& data, 
+        T value) noexcept;
+    friend TVector<T*> find_elem_by_pointer<T>(const TVector<T>& data, 
+        T value) noexcept;
     friend void shuffle<T>(TVector<T>& data);
     /* ... */
-private: 
+ private:
     /* ... */
     inline bool is_full() const noexcept;
     void make_space_for_insert(size_t index, size_t count);
@@ -132,7 +142,7 @@ TVector<T>::TVector(size_t size, const T* data) {
     for (size_t i = size; i < _capacity; i++) {
         _states[i] = State::empty;
     }
-} 
+}
 
 template <class T>
 TVector<T>::TVector(const TVector<T>& other) {
@@ -193,7 +203,6 @@ TVector<T>& TVector<T>::operator = (const TVector& other) {
     if (this == &other) {
         return *this;
     }
-    
     _size = other._size;
     _capacity = other._capacity;
     _deleted = other._deleted;
@@ -256,8 +265,7 @@ const T& TVector<T>::at(size_t index) const {
     size_t new_index = calculate_real_index(index);
     if (new_index != -1) {
         return _data[new_index];
-    }
-    else {
+    } else {
         throw std::logic_error("Index is not found\n");
     }
 }
@@ -356,7 +364,6 @@ void TVector<T>::shrink_to_fit() noexcept {
     if (_deleted == 0 && _size == _capacity) {
         return;
     }
-    
     size_t new_capacity = _size - _deleted;
     T* new_data = new T[new_capacity];
     State* new_states = new State[new_capacity];
@@ -398,8 +405,7 @@ void TVector<T>::assign(size_t count, const T& value) noexcept {
     if (new_size == 0) {
         clear();
         return;
-    }
-    else {
+    } else {
         new_data = new T[new_capacity];
         new_states = new State[new_capacity];
 
@@ -438,8 +444,7 @@ void TVector<T>::assign(std::initializer_list<T> data) noexcept {
     if (new_size == 0) {
         clear();
         return;
-    }
-    else {
+    } else {
         new_data = new T[new_capacity];
         new_states = new State[new_capacity];
 
@@ -493,14 +498,15 @@ void TVector<T>::resize(size_t new_size) noexcept {
     if (new_size == _size) return;
 
     T* new_data; State* new_states;
-    size_t new_capacity = (new_size / STEP_OF_CAPACITY + 1) * STEP_OF_CAPACITY;
-    size_t lowest_capacity = new_capacity > _capacity ? _capacity : new_capacity;
+    size_t new_capacity = (new_size / STEP_OF_CAPACITY + 1) 
+        * STEP_OF_CAPACITY;
+    size_t lowest_capacity = new_capacity > _capacity ? 
+        _capacity : new_capacity;
 
     if (new_size == 0) {
         clear();
         return;
-    }
-    else {
+    } else {
         new_data = new T[new_capacity];
         new_states = new State[new_capacity];
 
@@ -625,7 +631,6 @@ void TVector<T>::make_space_for_insert(size_t index, size_t count) {
 template <class T>
 void TVector<T>::make_space_for_insert(size_t index, size_t count) {
     for (size_t i = _size + count - 1; i > index; i--) {
-
         if (i < _capacity && i - count >= 0) {
             _data[i] = _data[i - count];
             _states[i] = _states[i - count];
@@ -642,7 +647,7 @@ int TVector<T>::calculate_real_index(size_t index) const noexcept {
 
     for (; real_index < _size; real_index++) {
         if (busy_count == index) {
-            while (_states[real_index] != State::busy && real_index < _size) 
+            while (_states[real_index] != State::busy && real_index < _size)
                 real_index++;
             if (_states[real_index] == State::busy)
                 return real_index;
@@ -670,15 +675,13 @@ void TVector<T>::push_front(const T& value) noexcept {
 
     if (_size == _capacity) {
         resize_for_insert(_size - _deleted + 1);
-    }
-    else {
+    } else {
         _size++;
     }
 
     if (_states[0] == State::busy) {
         make_space_for_insert(0, 1);
-    }
-    else {
+    } else {
         while (left_free < _size && _states[left_free + 1] == State::deleted)
             left_free++;
     }
@@ -700,8 +703,7 @@ void TVector<T>::push_back(const T& value) noexcept {
 
     if (_size == _capacity) {
         resize_for_insert(_size - _deleted + 1);
-    }
-    else {
+    } else {
         _size++;
     }
 
@@ -727,8 +729,7 @@ void TVector<T>::insert(const size_t index, const T& value) {
     if (_size == _capacity) {
         resize_for_insert(_size - _deleted + 1);
         make_space_for_insert(index, 1);
-    }
-    else {
+    } else {
         make_space_for_insert(calculate_real_index(index), 1);
         _size++;
     }
@@ -754,8 +755,7 @@ void TVector<T>::insert(const size_t index, size_t count, const T& value) {
     if (_size + count > _capacity) {
         resize_for_insert(_size - _deleted + count);
         make_space_for_insert(index, count);
-    }
-    else {
+    } else {
         make_space_for_insert(calculate_real_index(index), count);
         _size += count;
     }
@@ -784,8 +784,7 @@ void TVector<T>::insert(const size_t index, std::initializer_list<T> data_list) 
     if (_size + data_list.size() > _capacity) {
         resize_for_insert(_size + data_list.size() - _deleted);
         make_space_for_insert(index, data_list.size());
-    }
-    else {
+    } else {
         make_space_for_insert(calculate_real_index(index), data_list.size());
         _size += data_list.size();
     }
@@ -862,8 +861,7 @@ void TVector<T>::erase(size_t index) {
     }
     if (is_last_elem) {
         pop_back();
-    }
-    else {
+    } else {
         size_t real_index = calculate_real_index(index);
 
         while (_states[real_index] == State::deleted) real_index++;
@@ -899,8 +897,7 @@ void TVector<T>::print_all_info() noexcept {
             std::cout << _data[i] << " ";
         }
         std::cout << std::endl;
-    }
-    else {
+    } else {
         std::cout << "nullptr" << std::endl;
     }
     
@@ -910,8 +907,7 @@ void TVector<T>::print_all_info() noexcept {
             std::cout << _states[i] << " ";
         }
         std::cout << std::endl;
-    }
-    else {
+    } else {
         std::cout << "nullptr" << std::endl;
     }
     print();
@@ -947,10 +943,7 @@ void hoara_sort_rec(TVector<T>& data, size_t left, size_t right) {
                 data._states[r] = tmp2;
                 l++;
                 if (r > 0) r--;
-            }
-            else {
-                break;
-            }
+            } else break;
         }
         hoara_sort_rec(data, left, r);
         hoara_sort_rec(data, l, right);
