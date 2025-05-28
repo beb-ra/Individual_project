@@ -74,8 +74,8 @@ class TVector {
     void insert(const size_t index, size_t count, const T& value);
     void insert(const size_t index, std::initializer_list<T> data);
 
-    void pop_back() noexcept;
-    void pop_front() noexcept;
+    void pop_back();
+    void pop_front();
     void erase(size_t index);
 
     void assign(size_t count, const T& value) noexcept;
@@ -327,9 +327,11 @@ template <class T>
 inline const T& TVector<T>::front() const {
     if (is_empty())
         throw std::invalid_argument("Empty vector\n");
+    /*
     if (calculate_real_index(0) == -1) {
         throw std::logic_error("Index not found\n");
     }
+    */
     return _data[calculate_real_index(0)];
 }
 
@@ -807,8 +809,9 @@ void TVector<T>::insert(const size_t index,
 }
 
 template <class T>
-void TVector<T>::pop_back() noexcept {
-    if (is_empty()) return;
+void TVector<T>::pop_back() {
+    if (is_empty())
+        throw std::logic_error("Index is larger than vector size\n");
 
     int first_busy_index = -1;
     for (int i = _capacity; i >= 0; i--) {
@@ -828,8 +831,9 @@ void TVector<T>::pop_back() noexcept {
 }
 
 template <class T>
-void TVector<T>::pop_front() noexcept {
-    if (is_empty()) return;
+void TVector<T>::pop_front() {
+    if (is_empty())
+        throw std::logic_error("Index is larger than vector size\n");
 
     int first_busy_index = -1;
     for (size_t i = 0; i < _capacity; i++) {
@@ -852,7 +856,8 @@ template <class T>
 void TVector<T>::erase(size_t index) {
     bool is_last_elem = true;
 
-    if (is_empty()) return;
+    if (is_empty())
+        throw std::logic_error("Index is larger than vector size\n");
 
     for (size_t i = index + 1; i < _size; i++) {
         if (_states[i] == State::busy) {

@@ -439,7 +439,7 @@ bool test10_3_check_erase_last_elem() {
 }
 
 bool test_10_4_try_and_check_erases_in_empty_vector() {
-    bool expected_result = true;
+    bool expected_result = false;
     bool actual_result = true;
 
     TVector<int> object1;
@@ -447,7 +447,7 @@ bool test_10_4_try_and_check_erases_in_empty_vector() {
         object1.pop_front();
     }
     catch (const std::exception& ex) {
-        std::cerr << ex.what();
+        // std::cerr << ex.what();
         actual_result = false;
     }
     TVector<int> res1;
@@ -457,7 +457,7 @@ bool test_10_4_try_and_check_erases_in_empty_vector() {
         object2.pop_back();
     }
     catch (const std::exception& ex) {
-        std::cerr << ex.what();
+        // std::cerr << ex.what();
         actual_result = false;
     }
     TVector<int> res2;
@@ -467,7 +467,7 @@ bool test_10_4_try_and_check_erases_in_empty_vector() {
         object3.erase(0);
     }
     catch (const std::exception& ex) {
-        std::cerr << ex.what();
+        // std::cerr << ex.what();
         actual_result = false;
     }
     TVector<int> res3;
