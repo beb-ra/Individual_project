@@ -1,3 +1,5 @@
+//  Copyright 2025 Guseva Olga
+
 #pragma once
 
 #ifndef TIME_CTIME_H_

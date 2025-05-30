@@ -1,7 +1,10 @@
+//  Copyright 2025 Guseva Olga
+
 #pragma once
-#include "fio.h"
-#include "date.h"
-#include "document.h"
+
+#include "C:/Users/Lelya/cc++/Individual_project/Library/FIO/fio.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Date/date.h"
+#include "C:/Users/Lelya/cc++/Individual_project/Library/Document/document.h"
 
 #ifndef PERSON_PERSON_H_
 #define PERSON_PERSON_H_
