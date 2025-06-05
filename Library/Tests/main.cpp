@@ -1381,7 +1381,6 @@ bool test_26_3_push_back_after_clear() {
 }
 
 int main() {
-    /*
     TestSystem::start_test(test1_try_create_default_object,
         "TVector.test1_try_create_default_object");
     TestSystem::start_test(test2_try_create_with_default_object,
@@ -1558,12 +1557,6 @@ int main() {
         "TVector.test_26_2_push_front_after_clear");
     TestSystem::start_test(test_26_3_push_back_after_clear,
         "TVector.test_26_3_push_back_after_clear");
-    */
-    
-    //User* _data;
-    //_data = new User[10];
-    //TVector<User> userss;
-    //users = new TVector<User>();
 
     TestSystem::print_final_info();
     system("pause");

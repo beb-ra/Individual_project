@@ -158,11 +158,9 @@ namespace CppCLRWinFormsProject {
 		}
 #pragma endregion
 	public: void LoadUsers() {
-		std::ifstream file(
-		"C:\\Users\\Lelya\\cc++\\Individual_project\\Library\\User\\users_data.txt");
+		std::ifstream file("C:\\Users\\Lelya\\cc++\\Individual_project\\Library\\User\\users_data.csv");
 		if (!file.is_open()) {
-			System::Windows::Forms::MessageBox::Show(
-				"The file users.txt not found!", "Error",
+			System::Windows::Forms::MessageBox::Show("The file not found", "Error", 
 				System::Windows::Forms::MessageBoxButtons::OK,
 				System::Windows::Forms::MessageBoxIcon::Error);
 			return;
@@ -170,22 +168,59 @@ namespace CppCLRWinFormsProject {
 
 		std::string line;
 		while (std::getline(file, line)) {
-			size_t delimiter_pos = line.find(' ');
-			std::string login = line.substr(0, delimiter_pos);
-			std::string password = line.substr(delimiter_pos + 1);
+			size_t first_delim_pos = line.find(';');
+			if (first_delim_pos == std::string::npos) {
+				System::Windows::Forms::MessageBox::Show("There is not ;", "Error",
+					System::Windows::Forms::MessageBoxButtons::OK,
+					System::Windows::Forms::MessageBoxIcon::Error);
+				continue;
+			}
+
+			size_t second_delim_pos = line.find(';', first_delim_pos + 1);
+			if (second_delim_pos == std::string::npos) {
+				System::Windows::Forms::MessageBox::Show("There is not second ;", "Error",
+					System::Windows::Forms::MessageBoxButtons::OK,
+					System::Windows::Forms::MessageBoxIcon::Error);
+				continue;
+			}
+
+			std::string login = line.substr(0, first_delim_pos);
+			std::string password = line.substr(first_delim_pos + 1, second_delim_pos - first_delim_pos - 1);
+			std::string status_str = line.substr(second_delim_pos + 1);
+
+			
+			UserStatus status = UserStatus::Other;
+			if (status_str == "Director") {
+				status = UserStatus::Director;
+			}
+			else if (status_str == "Administrator") {
+				status = UserStatus::Administrator;
+			}
+			else if (status_str == "Librarian") {
+				status = UserStatus::Librarian;
+			}
+			
 			users->push_back(User(login, password));
 		}
 		file.close();
+		/*
+		std::string line;
+		while (std::getline(file, line)) {
+			size_t delimiter_pos = line.find(';');
+			std::string login = line.substr(0, delimiter_pos);
+			std::string password = line.substr(delimiter_pos + 1);
+			
+			users->push_back(User(login, password));
+		}
+		file.close();
+		*/
 	}
 
 	private: System::Void buttonLogin_Click(System::Object^ sender, System::EventArgs^ e) {
-		std::string login = msclr::interop::
-			marshal_as<std::string>(textBoxLogin->Text);
-		std::string password = msclr::interop::
-			marshal_as<std::string>(textBoxPassword->Text);
+		std::string login = msclr::interop::marshal_as<std::string>(textBoxLogin->Text);
+		std::string password = msclr::interop::marshal_as<std::string>(textBoxPassword->Text);
 		if (login == "" || password == "") {
-			System::Windows::Forms::MessageBox::Show(
-				"Enter your username and password!", "Error",
+			System::Windows::Forms::MessageBox::Show("Enter your username and password!", "Error",
 				System::Windows::Forms::MessageBoxButtons::OK,
 				System::Windows::Forms::MessageBoxIcon::Error);
 			return;
@@ -203,14 +238,12 @@ namespace CppCLRWinFormsProject {
 			if (found) {
 				textBoxLogin->Text = "";
 				textBoxPassword->Text = "";
-				System::Windows::Forms::MessageBox::Show(
-					"You successfully logged in", "Success");
+				System::Windows::Forms::MessageBox::Show("You successfully logged in", "Success");
 			}
 			else {
 				textBoxLogin->Text = "";
 				textBoxPassword->Text = "";
-				System::Windows::Forms::MessageBox::Show(
-					"Incorrect login or password", "Error",
+				System::Windows::Forms::MessageBox::Show("Incorrect login or password", "Error",
 					System::Windows::Forms::MessageBoxButtons::OK,
 					System::Windows::Forms::MessageBoxIcon::Error);
 			}
@@ -221,8 +254,7 @@ namespace CppCLRWinFormsProject {
 		}
 	}
 private: System::Void buttonRegistration_Click(System::Object^ sender, System::EventArgs^ e) {
-	System::Windows::Forms::MessageBox::Show(
-		"There will be registation window", "Success");
+	System::Windows::Forms::MessageBox::Show("There will be registation window", "Success");
 }
 };
 }

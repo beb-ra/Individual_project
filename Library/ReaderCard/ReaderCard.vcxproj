@@ -104,14 +104,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Lelya\cc++\Individual_project\Library\Book;C:\Users\Lelya\cc++\Individual_project\Library\BorrowedBook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Lelya\cc++\Individual_project\Library\TVector;C:\Users\Lelya\cc++\Individual_project\Library\Book;C:\Users\Lelya\cc++\Individual_project\Library\BorrowedBook;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>C:\Users\Lelya\cc++\Individual_project\Library\Book;C:\Users\Lelya\cc++\Individual_project\Library\BorrowedBook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Lelya\cc++\Individual_project\Library\TVector;C:\Users\Lelya\cc++\Individual_project\Library\Book;C:\Users\Lelya\cc++\Individual_project\Library\BorrowedBook;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

@@ -7,7 +7,7 @@
 
 enum DocumentType {
     Passport,
-    Diploma,
+    Diplom,
     StudentCard,
     PrivilegeCertificate
 };

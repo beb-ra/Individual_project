@@ -104,14 +104,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Lelya\cc++\Individual_project\Library\ReaderCard;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Lelya\cc++\Individual_project\Library\Person;C:\Users\Lelya\cc++\Individual_project\Library\ReaderCard;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>C:\Users\Lelya\cc++\Individual_project\Library\ReaderCard;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Lelya\cc++\Individual_project\Library\Person;C:\Users\Lelya\cc++\Individual_project\Library\ReaderCard;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -137,6 +137,9 @@
     <ClInclude Include="reader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Person\Person.vcxproj">
+      <Project>{c6f17e89-968c-41bd-b010-73c1587df4ba}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\ReaderCard\ReaderCard.vcxproj">
       <Project>{3d66f335-c266-441a-a1ee-6953cf1ced9b}</Project>
     </ProjectReference>
