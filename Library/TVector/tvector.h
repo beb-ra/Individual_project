@@ -118,7 +118,7 @@ TVector<T>::TVector(size_t size) {
     _states = new State[_capacity];
 
     for (size_t i = 0; i < size; i++) {
-        _data[i] = T();
+        //_data[i] = T();
         _states[i] = State::busy;
     }
     for (size_t i = size; i < _capacity; i++) {
