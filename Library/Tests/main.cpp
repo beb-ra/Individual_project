@@ -160,7 +160,6 @@ bool test4_2_2_check_create_object() {
 
     return TestSystem::check(1, object.data()[0]) &&
         TestSystem::check(2, object.data()[1]) &&
-        TestSystem::check(0, object.data()[2]) &&
         TestSystem::check(State::busy, object.states()[0]) &&
         TestSystem::check(State::busy, object.states()[1]) &&
         TestSystem::check(State::busy, object.states()[2]) &&
@@ -219,7 +218,7 @@ bool test5_check_assign_operator() {
 }
 
 bool test6_check_indexing_operator() {
-    TVector<int> object(6);
+    TVector<int> object(6, { 0, 0, 0, 0, 0, 0 });
     object[0] = 1;
     object[1] = 2;
     object[2] = 3;
@@ -237,7 +236,7 @@ bool test6_check_indexing_operator() {
 }
 
 bool test6_2_check_indexing_operator() {
-    TVector<int> object(8);
+    TVector<int> object(8, { 0, 0, 0, 0, 0, 0, 0, 0 });
     object[0] = 1;
     object[2] = 2;
     object[3] = 3;
@@ -342,7 +341,7 @@ bool test8_check_pop_front() {
 }
 
 bool test8_2_check_pop_front_with_resize() {
-    TVector<int> object(10);
+    TVector<int> object(10, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
     object[0] = 1;
     object[2] = 2;
     object[3] = 3;
@@ -531,7 +530,7 @@ bool test12_2_check_push_back() {
 }
 
 bool test12_3_check_push_back() {
-    TVector<int> object(10);
+    TVector<int> object(10, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     object[1] = 1;
     object[2] = 2;
     object[4] = 4;
@@ -582,7 +581,7 @@ bool test_12_6_check_push_back() {
 }
 
 bool test13_check_push_front() {
-    TVector<int> object(10);
+    TVector<int> object(10, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
     object[0] = 1;
     object[1] = 2;
     object[3] = 4;
@@ -632,7 +631,7 @@ bool test_13_4_check_push_front() {
 }
 
 bool test14_check_insert() {
-    TVector<int> object(10);
+    TVector<int> object(10, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
     object[1] = 1;
     object[2] = 2;
     object[4] = 4;
@@ -648,7 +647,7 @@ bool test14_check_insert() {
 }
 
 bool test14_2_check_insert_with_reserve() {
-    TVector<int> object(10);
+    TVector<int> object(10, { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
     object[1] = 1;
     object[3] = 2;
     object[4] = 4;

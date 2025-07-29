@@ -178,7 +178,7 @@ TVector<T>::TVector(size_t size, std::initializer_list<T> data) {
         _states[i] = State::busy;
     }
     for (; i < _size; i++) {
-        _data[i] = T();
+        //_data[i] = T();
         _states[i] = State::busy;
     }
     for (; i < _capacity; i++) {

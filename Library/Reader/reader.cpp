@@ -11,6 +11,9 @@ Reader::Reader(const FIO fio, const Date birthday, const Document document, cons
 }
 
 Reader::Reader(const Reader& other) : Person(other) {
+    if (&other == NULL) {
+        throw std::logic_error("The object is empty ");
+    }
     _client_id = other._client_id;
     _reader_card = other._reader_card;
 }

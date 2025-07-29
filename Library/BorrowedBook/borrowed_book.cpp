@@ -9,6 +9,9 @@ BorrowedBook::BorrowedBook(Book* book, Date issue_date, Date return_date, int re
     _reader_id(reader_id), _days_overdue(days_overdue) {}
 
 BorrowedBook::BorrowedBook(const BorrowedBook& other) {
+    if (&other == NULL) {
+        throw std::logic_error("The object is empty ");
+    }
     _book = other._book;
     _issue_date = other._issue_date;
     _return_date = other._return_date;

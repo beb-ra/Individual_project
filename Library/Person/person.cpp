@@ -1,6 +1,8 @@
 //  Copyright 2025 Guseva Olga
 
+
 #include "C:/Users/Lelya/cc++/Individual_project/Library/Person/person.h"
+#include <stdexcept>
 
 Person::Person() : _fio(), _birthday(), _document(), _phone("") {}
 
@@ -8,6 +10,9 @@ Person::Person(FIO fio, Date birthday, Document document, std::string phone) :
 	_fio(fio), _birthday(birthday), _document(document), _phone(phone) {}
 
 Person::Person(const Person& other) {
+	if (&other == NULL) {
+		throw std::logic_error("The object is empty ");
+	}
 	_fio = other._fio;
 	_birthday = other._birthday;
 	_document = other._document;

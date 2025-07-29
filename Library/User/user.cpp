@@ -19,8 +19,9 @@ User::User(const std::string& login, const std::string& password, const UserStat
     }
 }
 User::User(const User& other) {
-    if (&other == NULL)
-        throw std::invalid_argument("Object was not found\n");
+    if (&other == NULL) {
+        throw std::logic_error("The object is empty ");
+    }
     _login = other._login;
     _password = other._password;
     _status = other._status;
@@ -54,6 +55,9 @@ const UserStatus User::get_status() const noexcept {
 }
 
 bool User::operator==(const User& other) const noexcept {
+    if (&other == NULL) {
+        throw std::logic_error("The object is empty ");
+    }
     if (_login != other._login)
         return false;
     if (_password != other._password)

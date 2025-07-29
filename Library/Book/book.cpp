@@ -1,6 +1,7 @@
 //  Copyright 2025 Guseva Olga
 
 #include "C:/Users/Lelya/cc++/Individual_project/Library/Book/book.h"
+#include <stdexcept>
 
 Book::Book() : _book_id(0), _title(""), _author(""), _genre(""), _year_publication(0), 
    _status(BookStatus::InLibrary), _reader_id(-1) {}
@@ -12,6 +13,9 @@ Book::Book(int id, const std::string& title, const std::string& author,
     _year_publication(year), _status(status), _reader_id(reader_id) {}
 
 Book::Book(const Book& other) {
+    if (&other == NULL) {
+        throw std::logic_error("The object is empty ");
+    }
     _book_id = other._book_id;
     _title = other._title;
     _author = other._author;

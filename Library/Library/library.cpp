@@ -9,6 +9,9 @@ Library::Library(const TVector<Employee> employees, const TVector<Reader> reader
     _employees(employees), _readers(readers), _books(books), _borrowed_books(borrowed_books) {}
 
 Library::Library(const Library& other) {
+    if (&other == NULL) {
+        throw std::logic_error("The object is empty ");
+    }
     _employees = other._employees;
     _readers = other._readers;
     _books = other._books;

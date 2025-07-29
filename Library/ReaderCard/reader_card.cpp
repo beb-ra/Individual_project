@@ -8,6 +8,9 @@ ReaderCard::ReaderCard(const TVector<Book> book_archive, const TVector<BorrowedB
 	_book_archive(book_archive), _borrowed_books(borrowed_books) {}
 
 ReaderCard::ReaderCard(const ReaderCard& other) {
+	if (&other == NULL) {
+		throw std::logic_error("The object is empty ");
+	}
 	_book_archive = other._book_archive;
 	_borrowed_books = other._borrowed_books;
 }

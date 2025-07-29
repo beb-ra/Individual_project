@@ -28,7 +28,7 @@ namespace CppCLRWinFormsProject {
 		{
 			InitializeComponent();
 			users = new TVector<User>();
-			LoadUsers();
+			LoadUsers(users);
 		}
 
 	protected:
@@ -157,7 +157,7 @@ namespace CppCLRWinFormsProject {
 
 		}
 #pragma endregion
-	public: void LoadUsers() {
+	public: void LoadUsers(TVector<User>* users) {
 		std::ifstream file("C:\\Users\\Lelya\\cc++\\Individual_project\\Library\\User\\users_data.csv");
 		if (!file.is_open()) {
 			System::Windows::Forms::MessageBox::Show("The file not found", "Error", 
